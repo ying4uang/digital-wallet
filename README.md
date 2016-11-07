@@ -8,7 +8,7 @@
 6. [Testing your directory structure and output format] (README.md#testing-your-directory-structure-and-output-format)
 7. [FAQ] (README.md#faq)
 
-##Challenge Summary
+##Challenge Summary 
 
 Imagine you're a data engineer at a "digital wallet" company called PayMo that allows users to easily request and make payments to other PayMo users. The team at PayMo has decided they want to implement features to prevent fraudulent payment requests from untrusted users. 
 
