@@ -109,5 +109,4 @@ Example Repo Structure
 
 The contents of `src` do not have to contain the single file called `"antifraud.java"`, you are free to include one or more files and name them as required by your implementation.
 
-##Testing your directory structure and output format
-[Back to Table of Contents] (README.md#table-of-contents)
+
