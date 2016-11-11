@@ -90,7 +90,7 @@ try:
                 outputfile_feature1.write(str_unverified+"\n")
                 outputfile_feature2.write(str_trusted+"\n")
                 outputfile_feature3.write(str_trusted+"\n")
-            elif degree==4:
+            elif degree<=4:
                 outputfile_feature1.write(str_unverified+"\n")
                 outputfile_feature2.write(str_unverified+"\n")
                 outputfile_feature3.write(str_trusted+"\n")
