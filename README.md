@@ -3,10 +3,9 @@
 1. [Challenge Summary] (README.md#challenge-summary)
 2. [Details of Implementation] (README.md#details-of-implementation)
 3. [Test Cases] (README.md#test-cases)
-4. [Writing clean, scalable and well-tested code](README.md#writing-clean-scalable-and-well-tested-code)
-5. [Repo directory structure] (README.md#repo-directory-structure)
-6. [Testing your directory structure and output format] (README.md#testing-your-directory-structure-and-output-format)
-7. [FAQ] (README.md#faq)
+4. [Repo directory structure] (README.md#repo-directory-structure)
+5. [Directory structure and output format] (README.md#testing-your-directory-structure-and-output-format)
+
 
 ##Challenge Summary 
 
@@ -24,6 +23,7 @@ This challenge was completed in Python and no external libraries were used.
 ###Future Improvements:
 1.File Input Output can be improved to read and write in chunk.
 2.With a high-performance machine, we could precalculate second degree connections in the batch process to speed up the process in streadming.
+3.Other ways of fraud detections can be explored, combined with time and frequency.
 
 
 ##Test Cases
@@ -62,7 +62,7 @@ time, id1, id2, amount, message
 
 Expected Result: The two users are within fourth degree connections.
 
-### Batch and Stream File Downloaded
+### Batch and Stream File Downloaded from Dropbox
 
 I have only spot checked the results. Took about 17s for the batch file and 1200s for the stream file to load. A rough timer was also added in the code.
 
