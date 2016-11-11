@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from collections import deque
 
 class Vertex:
@@ -98,7 +100,10 @@ class Graph:
     
     def bibfs_degree_between(self,source_id,target_id,level_limit):
         """
-        Bidirectional breadth first search on the graph to retrieve the degree between users
+        Bidirectional breadth first search on the graph to retrieve the degree between users. It goes through
+        neighbors of source users and see if it is in connections of target users as the first level. And then
+        goes through neighbors of target users to see if they contain source user. And then continue to the
+        second degree connections.
 
         :param source_id: int, id of source node.
         :param target_id: int, id of target node.
@@ -107,28 +112,36 @@ class Graph:
         """
 
         
-        dist_source = dist_target = 0
 
+        #stores the current level of target/source users, visited users will be removed from the queue
         source_queue = deque()
         source_queue.append(source_id)
 
         target_queue = deque()
         target_queue.append(target_id)
 
-        source_visited = deque()
-        source_visited.append(source_id)
+        #whether we have visited the source or target node
+        source_visited = set()
+        source_visited.add(source_id)
 
-        target_visited = deque()
-        target_visited.append(target_id)
+        target_visited = set()
+        target_visited.add(target_id)
 
-        source_connections = deque()
-        source_connections.append(source_id)
+        #stores the connections of source/target users. As we goes thru each level, all the connections
+        #of source/target users will be added.
+        source_connections = set()
+        source_connections.add(source_id)
 
+        target_connections = set()
+        target_connections.add(target_id)
 
-        target_connections = deque()
-        target_connections.append(target_id)
-
+        #level helps to limit how much further we look into the common connections between the source
+        #and target users. Since we are searching bidirectionally from both source and target. If we are
+        #looking for 4th degree connection we only need to go down 2 levels from each side
         current_level = 1
+
+        #helps determines whether we finish the current degree of connection search for sourcce/target
+        dist_source = dist_target = 0
 
         while current_level <= level_limit/2: 
         
@@ -138,21 +151,21 @@ class Graph:
                 source_vert = self.get_vertex(source_vert_id) 
 
                 if(source_vert is not None):
+
                     for source_node in source_vert.get_first_connections():
-                       
                         if source_node not in source_visited:
                             if source_node in target_connections:
-                                return dist_source+dist_target+1
+                                return dist_source + dist_target + 1
         
                             source_queue.append(source_node)
-                            source_visited.append(source_node)
-                            source_connections.append(source_node)
+                            source_visited.add(source_node)
+                            source_connections.add(source_node)
                     
                     dist_source = dist_source + 1
 
-
+                #switching to target loop
                 if current_level == dist_source:
-                        #switching to target loop
+                        
                         break
 
             while (target_queue):
@@ -166,8 +179,8 @@ class Graph:
                             if target_node in source_connections:
                                 return dist_source + dist_target + 1
                             target_queue.append(target_node)
-                            target_visited.append(target_node)
-                            target_connections.append(target_node)
+                            target_visited.add(target_node)
+                            target_connections.add(target_node)
                     dist_target = dist_target+1
                 else:
                     return 0

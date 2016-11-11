@@ -2,7 +2,7 @@
 
 1. [Challenge Summary] (README.md#challenge-summary)
 2. [Details of Implementation] (README.md#details-of-implementation)
-3. [Description of Data] (README.md#description-of-data)
+3. [Test Cases] (README.md#test-cases)
 4. [Writing clean, scalable and well-tested code](README.md#writing-clean-scalable-and-well-tested-code)
 5. [Repo directory structure] (README.md#repo-directory-structure)
 6. [Testing your directory structure and output format] (README.md#testing-your-directory-structure-and-output-format)
@@ -20,87 +20,25 @@ When anyone makes a payment to another user, they'll be notified if they've neve
 ###Feature 2
 The PayMo team is concerned that these warnings could be annoying because there are many users who haven't had transactions, but are still in similar social networks. 
 
-For example, User A has never had a transaction with User B, but both User A and User B have made transactions with User C, so User B is considered a "friend of a friend" for User A.
-
-For this reason, User A and User B should be able to pay each other without triggering a warning notification since they're "2nd degree" friends. 
-
-<img src="./images/friend-of-a-friend1.png" width="500">
-
-To account for this, PayMo would like you to also implement this feature. When users make a payment, they'll be notified of when they're not "a friend of a friend".
-
 * "unverified: This user is not a friend or a "friend of a friend". Are you sure you would like to proceed with this payment?"
 
 
 ###Feature 3
 More generally, PayMo would like to extend this feature to larger social networks. Implement a feature to warn users only when they're outside the "4th degree friends network".
 
-<img src="./images/fourth-degree-friends2.png" width="600">
-
-In the above diagram, payments have transpired between User
-
-* A and B 
-* B and C 
-* C and D 
-* D and E 
-* E and F
-
-Under this feature, if User A were to pay User E, there would be no warning since they are "4th degree friends". 
-
-However, if User A were to pay User F, a warning would be triggered as their transaction is outside of the "4th-degree friends network."
-
-(Note that if User A were to pay User C instead, there would be no warning as they are "2nd-degree" friends and within the "4th degree network") 
-
-###Other considerations and optional features
-
-It's critical that these features don't take too long to run. For example, if it took 5 seconds when you make a payment to check whether a user is in your network, that would ruin your user experience and wouldn't be acceptable.
-
-
-While PayMo is a fictional company, the dataset is quite interesting -- it's inspired by a real social network, includes the time of transaction, and the messages come from real Venmo transactions -- so feel free to implement additional features that might be useful to prevent fraudulent payments.
-
-##Details of implementation
 
 [Back to Table of Contents] (README.md#table-of-contents)
 
-With this coding challenge, you should demonstrate strong understanding of computer science fundamentals. We won't be wowed by your knowledge of various available software libraries but will be impressed by your ability to pick and use the best data structures and algorithms for the job. 
-
-We're looking for clean, well-thought-out code that correctly implements the desired features in an optimized way.
-
-We also want to see how you use your programming skills to solve business problems. At a minimum, you should implement the three required features but feel free to expand upon this challenge or add other features you think would prevent fraud and further business goals. Be sure to document these add-ons so we know to look for them. 
-
-###Input
-
-Ideally, payment data would come from a real-time, streaming API, but we don't want this challenge to focus on the relatively uninteresting "DevOps" of connecting to an API.
-
-As a result, you may assume that collecting the payments has been done for you and the data resides in two comma-delimited files in the `paymo_input` directory. 
-
-The first file, `batch_payment.txt`, contains past data that can be used to track users who have previously paid one another. These transactions should be used to build the initial state of the entire user network.
-
-Data in the second file, `stream_payment.txt` should be used to determine whether there's a possibility of fraud and a warning should be triggered.
-
-You should assume that each new line of `stream_payment.txt` corresponds to a new, valid PayMo payment record -- regardless of being 'unverified' -- and design your program to handle a text file with a large number of payments. 
-
-###Output
-
-Your code should process each line in `stream_payment.txt` and for each payment, output a line containing one of two words, `trusted` or `unverified`. 
-
-`trusted` means the two users involved in the transaction have previously paid one another (when implementing Feature 1) or are part of the "friends network" (when implementing Feature 2 and 3).
-
-`unverified` means the two users have not previously been involved in a transaction (when implementing Feature 1) or are outside of the "friends network" (when implementing Features 2 and 3)
-
-The output should be written to a text file in the `paymo_output` directory. Because we are asking you to implement a minimum of three features, your program should output to at least three text files in the `paymo_output` directory. 
-
-Each output file should be named after the applicable feature you implemented (i.e., `output1.txt`, `output2.txt` and `output3.txt`)
-
-For example, if there were 5 lines of transactions in the `stream_payment.txt`, then the following `output1.txt` file for Feature 1 could look like this: 
-
-	trusted
-	trusted
-	unverified
-	unverified
-	trusted
+This submittes solution is mainly based on Graph and Graph Search. I have utilized bidirectional breadth search to speed up the traditional bfs because the degree of connections can grow exponentially. S
 
 
-##Description of Data
+###Future Improvements:
+1.File Input Output can be improved to read and write in chunk.
+2.With a high-performance machine, we could precalculate second degree connections in the batch process to speed up the process in streadming.
+
+
+
+##Test Cases
 
 [Back to Table of Contents] (README.md#table-of-contents)
 
