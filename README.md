@@ -35,14 +35,16 @@ In addition to the test case 1 provided. Two addition test cases were provided.
 This test case is to validate the graph is being updated by the latest streaming data.
 
 Batch File:
-*time, id1, id2, amount, message
-*2016-11-01 17:38:25, 49466, 6989, 23.74, 🦄
+
+	time, id1, id2, amount, message
+	2016-11-01 17:38:25, 49466, 6989, 23.74, 🦄
 
 Stream File:
-*time, id1, id2, amount, message
-*2016-11-01 17:38:25, 49466, 6990, 23.74, 🦄
-*2016-11-01 17:38:25, 49466, 6991, 23.75, 🦄
-*2016-11-01 17:38:25, 6990, 6991, 23.75, 🦄
+
+	time, id1, id2, amount, message
+	2016-11-01 17:38:25, 49466, 6990, 23.74, 🦄
+	2016-11-01 17:38:25, 49466, 6991, 23.75, 🦄
+	2016-11-01 17:38:25, 6990, 6991, 23.75, 🦄
 
 Expected Result: The first two records have no connections, the third one was a second degree connection.
 
@@ -51,14 +53,16 @@ Expected Result: The first two records have no connections, the third one was a 
 This test case is to test out 3rd degree connection is included in feature 3. 
 
 Batch File:
-*time, id1, id2, amount, message
-*2016-11-01 17:38:25, 49466, 6989, 23.74, 🦄
-*2016-11-01 17:38:25, 1123, 6989, 23.74, 🦄
-*2016-11-01 17:38:25, 1123, 2255, 23.74, 🦄
+
+	time, id1, id2, amount, message
+	2016-11-01 17:38:25, 49466, 6989, 23.74, 🦄
+	2016-11-01 17:38:25, 1123, 6989, 23.74, 🦄
+	2016-11-01 17:38:25, 1123, 2255, 23.74, 🦄
 
 Stream File:
-time, id1, id2, amount, message
-2016-11-01 17:38:25, 49466, 2255, 23.74, 🦄
+
+	time, id1, id2, amount, message
+	2016-11-01 17:38:25, 49466, 2255, 23.74, 🦄
 
 Expected Result: The two users are within fourth degree connections.
 
