@@ -24,6 +24,7 @@ This challenge was completed in Python and no external libraries were used.
 1.File Input Output can be improved to read and write in chunk.
 2.With a high-performance machine, we could precalculate second degree connections in the batch process to speed up the process in streadming.
 3.Other ways of fraud detections can be explored, combined with time and frequency.
+4.More methods need to be added for data cleaning and validation.
 
 
 ##Test Cases
