@@ -2,3 +2,4 @@
 paymo_input/batch_payment.txt
 paymo_input/stream_payment.txt
 paymo_output/
+src/*.pyc
